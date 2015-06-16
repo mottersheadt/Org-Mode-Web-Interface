@@ -18,6 +18,14 @@
   position: absolute;
 }
 
+.card .parent-story {
+  font-size: 12px;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  width: calc( 100% - 110px );
+}
+
 .card .status {
   display: block;
   color: rgb(255, 0, 0);
@@ -84,7 +92,7 @@
     display: inline-block;
     width: calc( 100% + 40px ) ;
     margin: 0 -20px;
-    height: 276px;
+    max-height: 276px;
     page-break-before: always;
     border-width: 0;
   }

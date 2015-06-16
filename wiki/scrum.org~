@@ -1,0 +1,39 @@
+* Project Title
+** Sprint 1
+*** Report system story
+    :VALUE:    16
+    :EFFORT:   40
+    :ROI:      8
+    :STATUS:   done
+    What if we just had a bunch of text that we could
+    just use here and replace all of the not so much tesxt
+**** Select Year in Year to date and quarterly
+     :EFFORT:   8
+     This is just a note
+**** Write Queries: all
+     :EFFORT:   8
+**** Make Views: all
+     :EFFORT:   8
+**** Fix week select
+     :EFFORT:   8
+**** Get reporting specs from P.O
+     :EFFORT:   8
+**** Report view fixes
+     :EFFORT:   8
+
+*** Ingram Story
+    :VALUE:    8
+    :EFFORT:   8
+    :ROI:      8
+    don't forget how good ingram is.
+    - hey
+    - yolo
+    - hey
+**** Add search bar to ingram system
+     :EFFORT:   13
+**** Add imprints to publisher book popup
+     :EFFORT:   13
+**** BISAC subjects not in list
+     :EFFORT:   13
+**** Selecting the Ingram inventory
+     :EFFORT:   13

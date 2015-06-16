@@ -72,8 +72,30 @@ var default_map = {
 }
 
 var current_header_layer = 0;
+var current_story	= null;
 var wrap_html		= false;
 var scrum_map		= {
+    initialize: function() {
+    	$('body').prepend([
+	    $('<button />')
+		.addClass('btn btn-lg btn-warning pull-right print-hide')
+		.css('margin-left', '10px')
+		.text('Print Tasks')
+		.on( 'click', function() {
+		    $('.card.task').addClass('hidden');
+		    window.print();
+		    $('.card.task').removeClass('hidden');
+		} ),
+	    $('<button />')
+		.addClass('btn btn-lg btn-info pull-right print-hide')
+		.text('Print Stories')
+		.on( 'click', function() {
+		    $('.card.story').addClass('hidden');
+		    window.print();
+		    $('.card.story').removeClass('hidden');
+		} )
+	])
+    },
     directive: function (p,n,html) {
 	if (n.directiveName === 'title:')
 	    return '<div class="header"><h1>'+html+'</h1></div>';
@@ -92,12 +114,11 @@ var scrum_map		= {
 	var elem	= '';
 
 	var diff	=  l - current_header_layer;
-	
+
 	for( i=0; i <= diff + 1; i++ )
 	    elem	+= '</div>';
 
 	current_header_layer = l
-	
 	switch( l ) {
 	case 1:
 	    elem	+= '<div class="print-hide"><h1>'+html+'</h1>';
@@ -107,9 +128,11 @@ var scrum_map		= {
 	    break;
 	case 3:
 	    elem	+= '<hr/><div class="story card"><div class="card-title">'+html+'</div>';
+	    current_story	= html
 	    break;
 	case 4:
-	    elem	+= '<div class="task card"><div class="card-title">'+html+'</div>';
+	    elem	+= '<div class="task card"><div class="card-title">'+html+
+		'<div class="parent-story">'+current_story+'</div></div>';
 	    break;
 	}
 	return elem;
@@ -181,7 +204,6 @@ var scrum_map		= {
 function Converter(parsed, map) {
     var html		= '';
     var nodes		= parsed.nodes || [];
-
     switch( map ) {
     case 'scrum':
 	map	= scrum_map
@@ -189,6 +211,8 @@ function Converter(parsed, map) {
     default:
 	map	= default_map;
     }
+    if( typeof map.initialize === 'function' )
+	map.initialize()
 
     
     for (var k in nodes) {
