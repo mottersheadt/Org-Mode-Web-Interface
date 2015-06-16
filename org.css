@@ -28,7 +28,7 @@
 
 .card .status {
   display: block;
-  color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0) !important;
   font-size: 100px;
   text-align: center;
   text-transform: uppercase;
@@ -47,19 +47,19 @@
 .card .value {
   bottom: 20px;
   right: 40px;
-  color: rgb( 0, 0, 255 );
+  color: rgb( 0, 0, 255 ) !important;
 }
 
 .card .effort {
   bottom: 20px;
   left: 40px;
-  color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0) !important;
 }
 
 .card .roi {
   top: 20px;
   right: 40px;
-  color: rgb( 0, 129, 0 );
+  color: rgb( 0, 129, 0 ) !important;
 }
 
 .story {

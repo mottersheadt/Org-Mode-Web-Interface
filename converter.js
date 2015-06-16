@@ -82,17 +82,17 @@ var scrum_map		= {
 		.css('margin-left', '10px')
 		.text('Print Tasks')
 		.on( 'click', function() {
-		    $('.card.task').addClass('hidden');
+		    $('.card.story').addClass('hidden');
 		    window.print();
-		    $('.card.task').removeClass('hidden');
+		    $('.card.story').removeClass('hidden');
 		} ),
 	    $('<button />')
 		.addClass('btn btn-lg btn-info pull-right print-hide')
 		.text('Print Stories')
 		.on( 'click', function() {
-		    $('.card.story').addClass('hidden');
+		    $('.card.task').addClass('hidden');
 		    window.print();
-		    $('.card.story').removeClass('hidden');
+		    $('.card.task').removeClass('hidden');
 		} )
 	])
     },

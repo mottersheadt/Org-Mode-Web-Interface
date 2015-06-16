@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="org.css" media="all" />
+    </head>
+    <body>
+	<a href="/" class="btn btn-lg print-hide">Go Home</a>
+	<button class="pull-right hidden btn btn-lg btn-warning"
+		id="reset-btn">
+	    Reset
+	</button>
+        <div id="content" class="container parsed-content">
+	    <p class="alert alert-danger error hidden" style="margin-top: 40px;">
+	    </p>
+	    <div id="form">
+		<div class="col-md-8">
+		    <h2>Org Input</h2>
+		    <textarea id="org-text" class="form-control"></textarea>
+		</div>
+		
+		<div class="col-md-4">
+		    <h2>Map</h2>
+		    <div class="radio">
+			<label>
+			    <input type="radio" name="map" value="default" checked>
+			    Default
+			</label>
+		    </div>
+		    <div class="radio">
+			<label>
+			    <input type="radio" name="map" value="scrum">
+			    Scrum
+			</label>
+		    </div>
+		    <button class="btn btn-lg btn-primary" id="submit-btn">Submit</button>
+		</div>
+	    </div>
+        </div>
+	
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="org.js"></script>
+        <script src="converter.js"></script>
+        <script type="text/javascript">
+    	  var parser		= new Org.Parser();
+	  var $content		= $('.parsed-content');
+	  var $form		= $('#form');
+	  
+	  $('#submit-btn').on('click', function() {
+	      convertText( $('#org-text').val(), $('[name="map"]:checked').val() )
+	  })
+
+	  function convertText( text, map ) {
+	      var parsed	= parser.parse( text );
+	      var html		= Converter( parsed, map );
+	      $form.hide();
+	      $('#reset-btn').show();
+	      $content.html( html );
+	  }
+
+	  $('#reset-btn').on('click', reset)
+
+	  function reset() {
+	      location.reload()
+	  }
+	      
+	</script>
+    </body>
+</html>
